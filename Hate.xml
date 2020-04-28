@@ -9,7 +9,7 @@
   <Windows>
     <Window name="HateWindow" layer="default" movable="false" popable="false" sticky="true" savesettings="true" handleinput="true">
       <Size>
-        <AbsPoint x="50" y="50" />
+        <AbsPoint x="60" y="50" />
       </Size>
 
       <Anchors>
@@ -36,7 +36,31 @@
           </Size>
           <Anchors>
             <Anchor point="center" relativePoint="center" relativeTo="$parent">
-              <AbsPoint x="10" y="0" />
+              <AbsPoint x="1" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" />
+        </Label>
+
+        <Label name="$parentStage1" font="font_clear_medium_bold" autoresize="true" textalign="leftcenter" layer="overlay" alpha="1" popable="false" handleinput="false">
+          <Size>
+            <AbsPoint x="50" y="50" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parent">
+              <AbsPoint x="42" y="-12" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" />
+        </Label>
+
+        <Label name="$parentStage2" font="font_clear_medium_bold" autoresize="true" textalign="leftcenter" layer="overlay" alpha="1" popable="false" handleinput="false">
+          <Size>
+            <AbsPoint x="50" y="50" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parent">
+              <AbsPoint x="42" y="12" />
             </Anchor>
           </Anchors>
           <Color r="255" g="255" b="255" />

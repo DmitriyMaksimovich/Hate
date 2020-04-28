@@ -1,6 +1,4 @@
 Hate = {}
---BLACKGUARD
---IRON_BREAKER
 
 function Hate.Init()
   RegisterEventHandler(SystemData.Events.ENTER_WORLD, "Hate.Enable")
@@ -20,12 +18,20 @@ function Hate.ShowHateWindow()
 end
 
 function Hate.Update()
+  if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
   local Resource = GetCareerResource(GameData.BuffTargetType.SELF)
   LabelSetText("HateWindowCounter", towstring(Resource))
+
+  local Stage1 = math.floor(Resource / 25)
+  local Stage2 = math.floor(Resource / 30)
+
+  LabelSetText("HateWindowStage1", towstring(Stage1))
+  LabelSetText("HateWindowStage2", towstring(Stage2))
 end
 
 function Rage.shtdwn()
   UnregisterEventHandler(SystemData.Events.ENTER_WORLD, "Hate.Enable")
   UnregisterEventHandler(SystemData.Events.INTERFACE_RELOADED, "Hate.Enable")
+  if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
   UnregisterEventHandler(SystemData.Events.PLAYER_CAREER_RESOURCE_UPDATED, "Hate.Update")
 end
