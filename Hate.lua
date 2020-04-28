@@ -29,7 +29,7 @@ function Hate.Update()
   LabelSetText("HateWindowStage2", towstring(Stage2))
 end
 
-function Rage.shtdwn()
+function Hate.shtdwn()
   UnregisterEventHandler(SystemData.Events.ENTER_WORLD, "Hate.Enable")
   UnregisterEventHandler(SystemData.Events.INTERFACE_RELOADED, "Hate.Enable")
   if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
