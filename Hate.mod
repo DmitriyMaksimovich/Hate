@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModuleFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <UiMod name="Hate" version="0.2" date="04/28/2020" >
+    <UiMod name="Hate" version="0.22" date="04/28/2020" >
 
         <Author name="dimakss" email="1dimakss@gmail.com" />
         <Description text="HateCounter" />
 
         <Dependencies>
-	         <Dependency name="EA_ChatWindow"/>
         </Dependencies>
 
         <WARInfo>
@@ -15,6 +14,7 @@
           </Categories>
           <Careers>
             <Career name="BLACKGUARD" />
+            <Career name="IRON_BREAKER" />
           </Careers>
         </WARInfo>
 
@@ -28,7 +28,7 @@
         </OnInitialize>
         <OnUpdate/>
         <OnShutdown>
-          <CallFunction name="Hate.shtdwn" />
+          <CallFunction name="Hate.Shutdown" />
         </OnShutdown>
     </UiMod>
 </ModuleFile>

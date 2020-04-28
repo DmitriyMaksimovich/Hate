@@ -1,4 +1,6 @@
-Hate = {}
+Hate = {
+  CareerAllowed = false
+}
 
 function Hate.Init()
   RegisterEventHandler(SystemData.Events.ENTER_WORLD, "Hate.Enable")
@@ -6,7 +8,8 @@ function Hate.Init()
 end
 
 function Hate.Enable()
-  if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
+  Hate.CareerAllowed = Hate.isCareerAllowed()
+  if not Hate.CareerAllowed then return end
   Hate.ShowHateWindow()
   RegisterEventHandler(SystemData.Events.PLAYER_CAREER_RESOURCE_UPDATED, "Hate.Update")
   Hate.Update()
@@ -18,7 +21,7 @@ function Hate.ShowHateWindow()
 end
 
 function Hate.Update()
-  if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
+  if not Hate.CareerAllowed then return end
   local Resource = GetCareerResource(GameData.BuffTargetType.SELF)
   LabelSetText("HateWindowCounter", towstring(Resource))
 
@@ -29,9 +32,17 @@ function Hate.Update()
   LabelSetText("HateWindowStage2", towstring(Stage2))
 end
 
-function Hate.shtdwn()
+function Hate.Shutdown()
   UnregisterEventHandler(SystemData.Events.ENTER_WORLD, "Hate.Enable")
   UnregisterEventHandler(SystemData.Events.INTERFACE_RELOADED, "Hate.Enable")
-  if GameData.Player.career.line ~= GameData.CareerLine.BLACKGUARD then return end
+  if not Hate.CareerAllowed then return end
   UnregisterEventHandler(SystemData.Events.PLAYER_CAREER_RESOURCE_UPDATED, "Hate.Update")
+end
+
+function Hate.isCareerAllowed()
+  if GameData.Player.career.line == GameData.CareerLine.BLACKGUARD or GameData.Player.career.line == GameData.CareerLine.IRON_BREAKER then
+    return true
+  else
+    return false
+  end
 end
